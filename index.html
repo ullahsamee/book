@@ -4,34 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Molecular Biology of Cell 7th Edition</title>
+    <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
     <style>
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
+            background-color: #f5f5f5;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background-color: #f5f5f5;
         }
         h1 {
             color: #2c3e50;
             text-align: center;
-            margin: 0;
+            margin: 10px 0;
             padding: 10px;
             background-color: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        object {
+        #adobe-dc-view {
             flex: 1;
             width: 100%;
-            height: calc(100vh - 50px);
+            height: calc(100vh - 70px);
         }
     </style>
 </head>
 <body>
     <h1>Molecular Biology of Cell 7th Edition</h1>
-    <object data="MolecularBiologyofCell7th.pdf" type="application/pdf">
-        <p>Unable to display PDF file. <a href="MolecularBiologyofCell7th.pdf">Download</a> instead.</p>
-    </object>
+    <div id="adobe-dc-view"></div>
+    <script>
+        document.addEventListener("adobe_dc_view_sdk.ready", function() {
+            var adobeDCView = new AdobeDC.View({
+                clientId: "5b6be996ab824b0e8113830d90888e85", 
+                divId: "adobe-dc-view"
+            });
+            adobeDCView.previewFile({
+                content: { location: { url: "MolecularBiologyofCell7th.pdf" } },
+                metaData: { fileName: "Molecular Biology of Cell 7th Edition.pdf" }
+            }, {
+                embedMode: "FULL_WINDOW",
+                showDownloadPDF: false,
+                showPrintPDF: false
+            });
+        });
+    </script>
 </body>
 </html>
